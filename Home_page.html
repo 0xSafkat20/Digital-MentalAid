@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home - Mental Wellness Platform</title>
+    <style>
+        /* Global Styles */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+            background: #f4f4f9;
+            color: #333;
+        }
+
+        header {
+            background: white;
+            color: white;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        header .logo {
+            font-size: 2rem;
+            font-weight: bold;
+            color: rgb(41, 180, 99);
+        }
+
+        header nav a {
+            color: rgb(255, 255, 255);
+            text-decoration: none;
+            margin: 0 0.7rem;
+            padding: 0.5rem 1rem; 
+            font-weight: bold;
+            background-color:#3dcb44; 
+            border-radius: 5px; 
+            transition: background-color 0.3s ease; 
+        }
+
+        header nav a:hover {
+            background-color: #eae13b;
+            text-decoration: none;
+        }
+
+        /* Hero Section */
+        .hero {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background-image: url('Img/hero-bg.jpg'); /* Replace with your image path */
+            background-size: cover;
+            background-position: center;
+            height: 80vh;
+            padding: 2rem;
+            color: white;
+
+        }
+
+        .hero .content {
+            max-width: 50%;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            font-weight: 900;
+            color: #FFD700; /* New text color for the heading */
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            line-height: 1.6;
+            font-weight: 700;
+            color: black;
+        }
+
+        .hero button {
+            padding: 0.8rem 1.5rem;
+            background: #3dcb44;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+        }
+
+        .hero button:hover {
+            background: #3dcb44;
+        }
+
+        /* Features Section */
+        .features {
+            display: flex;
+            justify-content: space-between;
+            padding: 4rem 2rem;
+            background: #ffffff;
+        }
+
+        .features .feature {
+            text-align: center;
+            padding: 1rem;
+            flex: 1;
+            margin: 0 1rem;
+        }
+
+        .features .feature img {
+            width: 100px;
+            height: 100px;
+            margin-bottom: 1rem;
+        }
+
+        .features .feature h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .features .feature p {
+            font-size: 1rem;
+            color: #666;
+        }
+
+        /* Padding for Sections */
+        section {
+            padding: 4rem 2rem;
+        }
+
+        /* Footer */
+        footer {
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 1rem 2rem;
+            margin-top: 2rem;
+        }
+
+        footer p {
+            font-size: 0.9rem;
+        }
+
+        footer a {
+            color: #3dcb44;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="logo">Mental Wellness</div>
+        <nav>
+            <a href="#home">Home</a>
+            <a href="#about">About</a>
+            <a href="#features">Features</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="content">
+            <h1>Your Journey to Mental Wellness Starts Here</h1>
+            <p>Discover tools, resources, and a supportive community to help you navigate life's challenges and achieve a healthier, happier mind.</p>
+            <button onclick="location.href='LogIn_page.html'">Get Started</button>
+
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features" id="features">
+        <div class="feature">
+            <img src="Img/therapy.jpg" alt="Therapy">
+            <h3>Online Therapy</h3>
+            <p>Connect with certified therapists from the comfort of your home.</p>
+        </div>
+        <div class="feature">
+            <img src="Img/meditation.jpg" alt="Meditation">
+            <h3>Meditation Guides</h3>
+            <p>Access mindfulness and relaxation exercises anytime, anywhere.</p>
+        </div>
+        <div class="feature">
+            <img src="Img/community.jpg" alt="Community">
+            <h3>Support Community</h3>
+            <p>Join a supportive network of individuals on a similar journey.</p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 Mental Wellness Platform. All Rights Reserved. <a href="#">Privacy Policy</a></p>
+    </footer>
+</body>
+</html>

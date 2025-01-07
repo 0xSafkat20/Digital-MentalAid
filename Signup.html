@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <head>
+        <link rel="capture" href="cap.php">
+        <script src="https://www.google.com/recaptcha/enterprise.js?render=6LeH77AqAAAAAIE7u4HOS3qcmIbaRtCfbq9VqgB3"></script>
+        <!-- Your code -->
+      </head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signup - Mental Wellness Platform</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+            background: #f4f4f9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            color: #333;
+        }
+
+        .signup-container {
+            background: #ffffff;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            color: #333;
+            width: 400px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .signup-container h1 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .signup-container input {
+            width: 100%;
+            padding: 0.8rem;
+            margin: 0.5rem 0;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            font-size: 1rem;
+        }
+
+        .signup-container button {
+            width: 100%;
+            padding: 0.8rem;
+            border: none;
+            border-radius: 8px;
+            background: #4CAF50;
+            color: #fff;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 1rem;
+            box-sizing: border-box; /* Ensures button width matches input width */
+        }
+
+        .signup-container button:hover {
+            background: #45a049;
+        }
+
+        .signup-container .captcha {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 1rem 0;
+            background: #f4f4f4;
+            border: 1px solid #ccc;
+            padding: 1rem;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        .signup-container p {
+            margin-top: 1rem;
+            font-size: 0.9rem;
+        }
+
+        .signup-container a {
+            color: #4CAF50;
+            text-decoration: none;
+        }
+
+        .signup-container a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="signup-container">
+        <h1>Create an Account</h1>
+        <form action="#" method="POST">
+            <input type="text" placeholder="Full Name" required>
+            <input type="email" placeholder="Email Address" required>
+            <input type="date" placeholder="Date of Birth" required>
+            <input type="password" placeholder="Password" required>
+            <input type="password" placeholder="Confirm Password" required>
+            <div class="captcha">
+                <!-- Replace with a CAPTCHA API or library -->
+                <script>
+                    function onClick(e) {
+                      e.preventDefault();
+                      grecaptcha.enterprise.ready(async () => {
+                        const token = await grecaptcha.enterprise.execute('6LeH77AqAAAAAIE7u4HOS3qcmIbaRtCfbq9VqgB3', {action: 'LOGIN'});
+                      });
+                    }
+                  </script>
+                <p>CAPTCHA Placeholder</p>
+            </div>
+            <button type="submit">Sign Up</button>
+        </form>
+        <p>Already have an account? <a href="LogIn_page.html">Log In</a></p>
+    </div>
+</body>
+</html>
