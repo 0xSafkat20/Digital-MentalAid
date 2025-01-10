@@ -1,11 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <head>
-        <link rel="capture" href="cap.php">
-        <script src="https://www.google.com/recaptcha/enterprise.js?render=6LeH77AqAAAAAIE7u4HOS3qcmIbaRtCfbq9VqgB3"></script>
-        <!-- Your code -->
-      </head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Signup - Mental Wellness Platform</title>
@@ -14,7 +9,7 @@
             margin: 0;
             padding: 0;
             font-family: 'Arial', sans-serif;
-            background: #f4f4f9;
+            background: linear-gradient(135deg, #61db65, #3ECF8E);
             display: flex;
             justify-content: center;
             align-items: center;
@@ -24,30 +19,45 @@
 
         .signup-container {
             background: #ffffff;
-            padding: 2rem;
+            padding-left: 5rem;
+            padding-right: 5rem;
             border-radius: 12px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
             text-align: center;
             color: #333;
-            width: 400px;
+            width: 30%;
+            max-width: 400px;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
         }
 
         .signup-container h1 {
-            font-size: 2rem;
-            margin-bottom: 1rem;
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            color: #29B463;
+            font-weight: bold;
         }
 
         .signup-container input {
             width: 100%;
             padding: 0.8rem;
             margin: 0.5rem 0;
-            border: 1px solid #ccc;
+            border: 1px solid #ddd;
             border-radius: 8px;
             font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .signup-container input:focus {
+            border-color: #29B463;
+            box-shadow: 0 0 8px rgba(41, 180, 99, 0.2);
+            outline: none;
         }
 
         .signup-container button {
@@ -55,30 +65,17 @@
             padding: 0.8rem;
             border: none;
             border-radius: 8px;
-            background: #4CAF50;
+            background: #29B463;
             color: #fff;
-            font-size: 1rem;
+            font-size: 1.1rem;
             font-weight: bold;
             cursor: pointer;
             margin-top: 1rem;
-            box-sizing: border-box; /* Ensures button width matches input width */
+            transition: all 0.3s ease;
         }
 
         .signup-container button:hover {
-            background: #45a049;
-        }
-
-        .signup-container .captcha {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin: 1rem 0;
-            background: #f4f4f4;
-            border: 1px solid #ccc;
-            padding: 1rem;
-            border-radius: 8px;
-            font-size: 0.9rem;
-            color: #666;
+            background: #238e4e;
         }
 
         .signup-container p {
@@ -87,39 +84,118 @@
         }
 
         .signup-container a {
-            color: #4CAF50;
+            color: #29B463;
             text-decoration: none;
+            font-weight: bold;
         }
 
         .signup-container a:hover {
             text-decoration: underline;
+        }
+
+        .social-signup {
+            margin-top: 1rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+        }
+
+        .social-signup button {
+            width: 100%;
+            padding: 0.8rem;
+            border: none;
+            border-radius: 8px;
+            margin-top: 0.5rem;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            color: white;
+        }
+
+        .social-signup button.facebook {
+            background: #3b5998;
+        }
+
+        .social-signup button.google {
+            background: #db4437;
+        }
+
+        .terms {
+            margin-top: 1rem;
+            text-align: left;
+            font-size: 0.9rem;
+        }
+
+        .terms label {
+            display: flex;
+            align-items: center;
+        }
+
+        .password-strength {
+            text-align: left;
+            font-size: 0.9rem;
+            margin: 0.5rem 0;
+            color: #666;
+        }
+
+        @media (max-width: 600px) {
+            .signup-container {
+                padding: 1.5rem;
+                width: 90%;
+            }
+
+            .signup-container h1 {
+                font-size: 2rem;
+            }
+
+            .signup-container input, .signup-container button {
+                font-size: 1rem;
+            }
         }
     </style>
 </head>
 <body>
     <div class="signup-container">
         <h1>Create an Account</h1>
-        <form action="#" method="POST">
-            <input type="text" placeholder="Full Name" required>
-            <input type="email" placeholder="Email Address" required>
-            <input type="date" placeholder="Date of Birth" required>
-            <input type="password" placeholder="Password" required>
-            <input type="password" placeholder="Confirm Password" required>
-            <div class="captcha">
-                <!-- Replace with a CAPTCHA API or library -->
-                <script>
-                    function onClick(e) {
-                      e.preventDefault();
-                      grecaptcha.enterprise.ready(async () => {
-                        const token = await grecaptcha.enterprise.execute('6LeH77AqAAAAAIE7u4HOS3qcmIbaRtCfbq9VqgB3', {action: 'LOGIN'});
-                      });
-                    }
-                  </script>
-                <p>CAPTCHA Placeholder</p>
-            </div>
+        <!-- <form action="#" method="POST"> -->
+       <form action="User_Dashboard.html" >
+            <input type="text" placeholder="Full Name" >
+            <input type="email" placeholder="Email Address" >
+            <input type="date" placeholder="Date of Birth" >
+            <input type="password" placeholder="Password" id="password" >
+            <div id="strengthMessage" class="password-strength"></div>
+            <input type="password" placeholder="Confirm Password" >
+
             <button type="submit">Sign Up</button>
+
+            <div class="social-signup">
+                <p>Or sign up using:</p>
+                <button type="button" class="facebook">Sign Up with Facebook</button>
+                <button type="button" class="google">Sign Up with Google</button>
+            </div>
         </form>
         <p>Already have an account? <a href="LogIn_page.html">Log In</a></p>
     </div>
+
+    <script>
+        // Password Strength Indicator
+        const passwordInput = document.getElementById('password');
+        const strengthMessage = document.getElementById('strengthMessage');
+
+        passwordInput.addEventListener('input', () => {
+            const value = passwordInput.value;
+            if (value.length < 6) {
+                strengthMessage.textContent = "Weak (too short)";
+                strengthMessage.style.color = "red";
+            } else if (value.length < 12) {
+                strengthMessage.textContent = "Moderate";
+                strengthMessage.style.color = "orange";
+            } else {
+                strengthMessage.textContent = "Strong";
+                strengthMessage.style.color = "green";
+            }
+        });
+    </script>
 </body>
 </html>

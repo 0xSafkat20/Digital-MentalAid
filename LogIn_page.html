@@ -3,47 +3,54 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Login to the Mental Wellness Platform to access resources and tools for a healthier mind.">
     <title>Login - Mental Wellness Platform</title>
+
     <style>
         body {
             margin: 0;
             padding: 0;
             font-family: 'Arial', sans-serif;
-            background: #f4f4f9;
+            background: linear-gradient(135deg, #f4f4f9, #e8f5e9);
+            height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
-            color: #333;
+            overflow: hidden;
         }
 
         .container {
             display: flex;
-            width: 100%;
-            height: 100%;
+            width: 90%;
+            max-width: 1200px;
+            height: 90%;
+            background: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
         }
 
         .left-content {
-            width: 55%;
-            height: 90%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background-image: url('Img/article.jpg'); 
+            width: 50%;
+            background-image: url('Img/article.jpg');
             background-size: cover;
             background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #ffffff;
             padding: 2rem;
-            color: white;
+        }
+
+        .left-content h1 {
+            font-size: 2.5rem;
+            text-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            text-align: center;
         }
 
         .login-container {
-            width: 45%;
-            height: 90%;
-            background: #ffffff;
-            padding: 2rem;
-            border-radius: 12px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-            text-align: center;
+            width: 50%;
+            padding: 2.5rem;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -51,45 +58,76 @@
         }
 
         .login-container h1 {
-            font-size: 3rem;
+            font-size: 2.5rem;
             margin-bottom: 1rem;
+            color: #29B463;
+        }
+
+        .login-container h2 {
+            font-size: 1.2rem;
+            color: #555;
+            text-align: center;
+            margin-bottom: 1.5rem;
+            font-style: italic;
+        }
+
+        .login-container h2 span {
+            font-weight: bold;
+            color: #29B463;
+        }
+
+        .login-container form {
+            width: 100%;
+            max-width: 400px;
+            display: flex;
+            flex-direction: column;
         }
 
         .login-container input {
             width: 100%;
             padding: 0.8rem;
             margin: 0.5rem 0;
-            border: 1px solid #ccc;
+            border: 1px solid #ddd;
             border-radius: 8px;
             font-size: 1rem;
+            box-sizing: border-box;
+            transition: all 0.3s ease;
+        }
+
+        .login-container input:focus {
+            border-color: #29B463;
+            box-shadow: 0 0 8px rgba(41, 180, 99, 0.2);
+            outline: none;
         }
 
         .login-container button {
-            width: 105%; 
+            width: 100%;
             padding: 0.8rem;
+            margin-top: 1rem;
             border: none;
             border-radius: 8px;
-            background: #4CAF50;
-            color: #fff;
+            background: #29B463;
+            color: #ffffff;
             font-size: 1rem;
             font-weight: bold;
             cursor: pointer;
-            margin-top: 1rem;
-            box-sizing: border-box;
+            transition: all 0.3s ease;
         }
 
         .login-container button:hover {
-            background: #45a049;
+            background: #238e4e;
         }
 
         .login-container p {
             margin-top: 1rem;
             font-size: 0.9rem;
+            color: #555;
         }
 
         .login-container a {
-            color: #4CAF50;
+            color: #29B463;
             text-decoration: none;
+            font-weight: bold;
         }
 
         .login-container a:hover {
@@ -101,36 +139,124 @@
             font-size: 0.9rem;
         }
 
-        h2 {
-            font-family: 'Arial', sans-serif;
-            font-size: 2rem;
-            font-weight: normal;
-            color: #333;
-            margin: 0;
+        .social-login {
+            margin-top: 1rem;
             text-align: center;
-            line-height: 1.5;
         }
 
-        h2 span {
-            font-style: italic;
-            color: #555;
+        .social-login button {
+            background: #3b5998;
+            color: white;
+            width: 100%;
+            padding: 0.8rem;
+            margin-top: 0.5rem;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: bold;
+        }
+
+        .social-login button.google {
+            background: #db4437;
+        }
+
+        .loading-spinner {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+                height: auto;
+            }
+
+            .left-content {
+                width: 100%;
+                height: 200px;
+            }
+
+            .login-container {
+                width: 100%;
+                padding: 1.5rem;
+            }
         }
     </style>
 </head>
 <body>
+    <div id="loading-spinner" class="loading-spinner">
+        <img src="Img/spinner.gif" alt="Loading..." style="width: 150px;">
+    </div>
+
     <div class="container">
-        <div class="left-content"></div>
+        <div class="left-content">
+            <h1>"Empower your mind, embrace wellness."</h1>
+        </div>
         <div class="login-container">
             <h1>Welcome Back</h1>
-            <h2>"It always seems impossible until it’s done."</br><span>– Nelson Mandela</span></h2>
-            <form action="#" method="POST">
-                <input type="email" placeholder="Email">
-                <input type="password" placeholder="Password">
+            <h2>"It always seems impossible until it’s done." <br><span>– Nelson Mandela</span></h2>
+
+            <!-- <form id="loginForm" action="#" method="POST"> -->
+            <form id="loginForm" action="User_Dashboard.html" method="POST">
+                <input type="email" id="email" placeholder="Email Address" >
+                <input type="password" placeholder="Password" >
                 <button type="submit">Log In</button>
             </form>
             <p class="forgot-password"><a href="#">Forgot Password?</a></p>
             <p>Don't have an account? <a href="Signup.html">Sign Up</a></p>
+
+            <div class="social-login">
+                <p>Or log in using:</p>
+                <button>Log In with Facebook</button>
+                <button class="google">Log In with Google</button>
+            </div>
         </div>
     </div>
+
+    
+    <script>
+        const form = document.getElementById('loginForm');
+        const spinner = document.getElementById('loading-spinner');
+
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+
+            // Simulate email verification process
+            const email = document.getElementById('email').value;
+            if (!email.endsWith('@gmail.com')) {
+                alert('Please use a valid email address from @example.com domain.');
+                return;
+            }
+
+            spinner.style.display = 'block';
+            setTimeout(() => {
+                spinner.style.display = 'none';
+                alert('Logged in successfully! Email verified.');
+            }, 6000);
+        });
+
+        // Dark Mode Toggle
+        const toggleDarkMode = document.createElement('button');
+        toggleDarkMode.textContent = 'Dark Mode';
+        toggleDarkMode.style.position = 'fixed';
+        toggleDarkMode.style.top = '10px';
+        toggleDarkMode.style.right = '10px';
+        toggleDarkMode.style.background = '#333';
+        toggleDarkMode.style.color = '#fff';
+        toggleDarkMode.style.border = 'none';
+        toggleDarkMode.style.padding = '0.5rem 1rem';
+        toggleDarkMode.style.borderRadius = '5px';
+        document.body.appendChild(toggleDarkMode);
+
+        toggleDarkMode.addEventListener('click', () => {
+            document.body.classList.toggle('dark-mode');
+            document.body.style.background = document.body.classList.contains('dark-mode') ? '#333' : 'linear-gradient(135deg, #f4f4f9, #e8f5e9)';
+            document.body.style.color = document.body.classList.contains('dark-mode') ? '#fff' : '#333';
+        });
+    </script>
 </body>
 </html>
