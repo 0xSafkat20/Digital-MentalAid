@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us</title>
+    <style>
+        /* General Styles */
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 30px auto;
+            padding: 20px;
+            background-color: #ffffff;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        h1, h2 {
+            color: #006400; /* Green color theme */
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+
+        h2 {
+            font-size: 1.5rem;
+            margin-top: 20px;
+        }
+
+        p {
+            font-size: 1rem;
+            line-height: 1.6;
+            color: #555;
+        }
+
+        .section {
+            margin-bottom: 30px;
+        }
+
+        .mission, .vision {
+            background-color: #f9f9f9;
+            padding: 15px;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+        }
+
+        /* Team Section */
+        .team {
+            background-color: #f9f9f9;
+            padding: 15px;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+        }
+
+        .team-member {
+            text-align: center;
+            padding: 15px;
+            background-color: #ffffff;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .team-member:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .team-member img {
+            max-width: 100px;
+            border-radius: 50%;
+            margin-bottom: 10px;
+            border: 3px solid #006400; /* Green border around images */
+        }
+
+        .team-member p {
+            margin: 5px 0;
+            font-size: 1rem;
+            color: #333;
+        }
+
+        .team-member strong {
+            font-size: 1.1rem;
+            color: #006400;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Main Content -->
+    <div class="container">
+        <h1>About Us</h1>
+        <p>
+            Welcome to our project! We are a team of dedicated individuals passionate about delivering innovative and impactful solutions. 
+            Our mission is to create technology that improves lives and drives progress.
+        </p>
+
+        <!-- Mission Section -->
+        <div class="section mission">
+            <h2>Our Mission</h2>
+            <p>
+                Our mission is to inspire and empower users through innovative tools and solutions. 
+                We aim to provide a platform that is not only user-friendly but also helps solve real-world challenges effectively.
+            </p>
+        </div>
+
+        <!-- Vision Section -->
+        <div class="section vision">
+            <h2>Our Vision</h2>
+            <p>
+                We envision a future where technology bridges the gap between ideas and reality. 
+                Our vision is to be a leader in providing sustainable and efficient technological solutions that benefit everyone.
+            </p>
+        </div>
+
+        <!-- Team Section -->
+        <div class="section team">
+            <h2>Meet the Team</h2>
+            <div class="team-grid">
+                <div class="team-member">
+                    <img src="./Img/profile.jpg" alt="Team Member">
+                    <p><strong>John Doe</strong></p>
+                    <p>Project Manager</p>
+                </div>
+                <div class="team-member">
+                    <img src="./Img/profile.jpg" alt="Team Member">
+                    <p><strong>Jane Smith</strong></p>
+                    <p>Lead Developer</p>
+                </div>
+                <div class="team-member">
+                    <img src="./Img/profile.jpg" alt="Team Member">
+                    <p><strong>Emily Brown</strong></p>
+                    <p>UI/UX Designer</p>
+                </div>
+                <div class="team-member">
+                    <img src="./Img/profile.jpg" alt="Team Member">
+                    <p><strong>Chris Johnson</strong></p>
+                    <p>Data Scientist</p>
+                </div>
+                <div class="team-member">
+                    <img src="./Img/profile.jpg" alt="Team Member">
+                    <p><strong>Sara White</strong></p>
+                    <p>Quality Analyst</p>
+                </div>
+                <div class="team-member">
+                    <img src="./Img/profile.jpg" alt="Team Member">
+                    <p><strong>Michael Green</strong></p>
+                    <p>Backend Developer</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
