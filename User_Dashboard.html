@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Mental Health Resources</title>
+    <link rel="icon" href="Img/fav.png" type="img/x-icon">
     <style>
 * {
     margin: 0;
@@ -22,12 +23,12 @@ body {
 
 header {
     background-color: #4CAF50;
-            padding: 20px 0;
-            color: white;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 20px 0;
+    color: white;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 header .container {
@@ -388,53 +389,6 @@ footer p {
     }
 }
 
-
-/* Media Queries for responsiveness */
-@media (max-width: 768px) {
-    .container {
-        width: 90%;
-    }
-
-    .card-container {
-        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    }
-
-    .contact form {
-        max-width: 100%;
-    }
-
-    .filter-button {
-        padding: 10px 18px;
-        font-size: 14px;
-    }
-}
-
-@media (max-width: 480px) {
-    header .container {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-
-    header h1 {
-        font-size: 24px;
-    }
-
-    header nav ul {
-        flex-direction: column;
-        margin-top: 10px;
-    }
-
-    header nav ul li {
-        margin-left: 0;
-        margin-bottom: 10px;
-    }
-
-    .card-container {
-        grid-template-columns: 1fr;
-    }
-}
-
-
     </style>
 </head>
 <body>
@@ -443,10 +397,10 @@ footer p {
             <h1>Mental Health Support</h1>
             <nav>
                 <ul>
-                    <li><a href="#">Home</a></li>
+                    <li><a href="index.html">Home</a></li>
                     <li><a href="#">Activities</a></li>
                     <li><a href="#">Resources</a></li>
-                    <li><a href="#">Contact</a></li>
+                    <li><a href="Contact.html">Contact</a></li>
                 </ul>
             </nav>
         </div>
@@ -463,9 +417,17 @@ footer p {
         <section class="activities">
             <div class="container">
                 <div class="activity-filters">
-                    <button class="filter-button">Stress Relief</button>
-                    <button class="filter-button">Positive Thinking</button>
-                    <button class="filter-button">Focus & Clarity</button>
+                    <a href="Book_Display.html" rel="noopener noreferrer">
+                        <button class="filter-button">Read a Book</button>
+                    </a>
+                    
+                    <a href="Course_page.html" rel="noopener noreferrer">
+                        <button class="filter-button">Get a Course</button>
+                    </a>
+                    
+                    <a href="https://example.com" rel="noopener noreferrer">
+                        <button class="filter-button">Contact a Therapist</button>
+                    </a>
                 </div>
                 <h3>Recommended Activities</h3>
                 <div class="card-container">

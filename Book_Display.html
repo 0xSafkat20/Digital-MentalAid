@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Library</title>
+    <link rel="icon" href="Img/fav.png" type="img/x-icon">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+            color: #333;
+        }
+        header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        .book {
+            background-color: white;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            transition: transform 0.2s;
+        }
+        .book:hover {
+            transform: translateY(-5px);
+        }
+        .book img {
+            width: 100%;
+            height: auto;
+        }
+        .book-content {
+            padding: 15px;
+            text-align: center;
+        }
+        .book-content h3 {
+            margin: 10px 0;
+            font-size: 18px;
+            color: #333;
+        }
+        .book-content a {
+            text-decoration: none;
+            color: white;
+            background-color: #4CAF50;
+            padding: 10px 15px;
+            border-radius: 5px;
+            font-size: 14px;
+            display: inline-block;
+            transition: background-color 0.3s;
+        }
+        .book-content a:hover {
+            background-color: #45a049;
+        }
+        iframe {
+            width: 100%;
+            height: 300px;
+            border: none;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Book Library</h1>
+        <p>Explore our collection of books and read your favorite ones!</p>
+    </header>
+
+    <div class="container">
+        <div class="book">
+            <iframe frameborder="0" scrolling="no" style="border:0px" src="https://books.google.com.bd/books?id=MP5X2SK2DCgC&newbks=0&lpg=PP1&dq=Introduction%20to%20Psychology&pg=PP1&output=embed" width=500 height=500></iframe>
+            <div class="book-content">
+                <h3>Introduction to Psychology and Mental Health</h3>
+                <a href="https://www.google.com.bd/books/edition/Introduction_to_Psychology/Tw2bEAAAQBAJ?hl=en&gbpv=1&dq=Psychology&printsec=frontcover" target="_blank">Read More</a>
+            </div>
+        </div>
+        <div class="book">
+            <iframe frameborder="0" scrolling="no" style="border:0px" src="https://books.google.com.bd/books?id=2rHoouxT514C&newbks=0&lpg=PA158&dq=Mental%20health&pg=PA225&output=embed" width=500 height=500></iframe>
+            <div class="book-content">
+                <h3>Psychiatric-mental Health Nursing</h3>
+                <a href="https://www.google.com.bd/books/edition/Psychiatric_mental_Health_Nursing/2rHoouxT514C?hl=en&gbpv=1&dq=Mental%20health&pg=PA225&printsec=frontcover" target="_blank">Read More</a>
+            </div>
+        </div>
+        <div class="book">
+            <iframe frameborder="0" scrolling="no" style="border:0px" src="https://books.google.com.bd/books?id=3fo8EAAAQBAJ&newbks=0&lpg=PA8&dq=mental%20health&pg=PP1&output=embed" width=500 height=500></iframe>
+            <div class="book-content">
+                <h3>Mental Health A Pocket Guide</h3>
+                <a href="https://www.google.com.bd/books/edition/Mental_Health_A_Pocket_Guide/3fo8EAAAQBAJ?hl=en&gbpv=1&dq=mental%20health&pg=PP1&printsec=frontcover" target="_blank">Read More</a>
+            </div>
+        </div>
+        <div class="book">
+            <iframe frameborder="0" scrolling="no" style="border:0px" src="https://books.google.com.bd/books?id=n5iBW6KTaI8C&newbks=0&lpg=PA250&dq=mental%20health&pg=PP1&output=embed" width=500 height=500></iframe>
+            <div class="book-content">
+                <h3>Mental Health Professionals, Minorities and the Poor</h3>
+                <a href="https://www.google.com.bd/books/edition/Mental_Health_Professionals_Minorities_a/n5iBW6KTaI8C?hl=en&gbpv=1&dq=mental%20health&pg=PP1&printsec=frontcover" target="_blank">Read More</a>
+            </div>
+        </div>
+        <div class="book">
+            <iframe frameborder="0" scrolling="no" style="border:0px" src="https://books.google.com.bd/books?id=MMgAEQAAQBAJ&newbks=0&lpg=PT22&dq=Mental%20Health&pg=PA2006&output=embed" width=500 height=500></iframe>
+            <div class="book-content">
+                <h3>Mental Health in English Language Education</h3>
+                <a href="https://www.google.com.bd/books/edition/Mental_Health_in_English_Language_Educat/MMgAEQAAQBAJ?hl=en&gbpv=1&dq=Mental%20Health&pg=PA2006&printsec=frontcover" target="_blank">Read More</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
