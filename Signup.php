@@ -1,3 +1,61 @@
+<?php
+$error_message = "";
+$success_message = "";
+
+// Check if the form is submitted
+if ($_SERVER["REQUEST_METHOD"] === "POST") {
+    // Database configuration
+    $db_server = "localhost";
+    $db_user = "root";
+    $db_pass = "";
+    $db_name = "project_user";
+
+    // Connect to the database
+    $conn = new mysqli($db_server, $db_user, $db_pass, $db_name);
+
+    if ($conn->connect_error) {
+        die("Database connection error: " . $conn->connect_error);
+    }
+
+    // Retrieve form data
+    $full_name = $_POST['full_name'];
+    $email = $_POST['email'];
+    $password = $_POST['password'];
+    $confirm_password = $_POST['confirm_password'];
+    $category = $_POST['category'];
+
+    // Validation
+    if (empty($full_name) || empty($email) || empty($password) || empty($confirm_password) || empty($category)) {
+        $error_message = "All fields are required.";
+    } elseif (!preg_match('/^[a-zA-Z0-9._%+-]+@gmail\.com$/', $email)) {
+        $error_message = "Email must be a valid Gmail address (e.g., user@gmail.com).";
+    } elseif (strlen($password) < 8) {
+        $error_message = "Password must be at least 8 characters long.";
+    } elseif ($password !== $confirm_password) {
+        $error_message = "Passwords do not match.";
+    } else {
+        $hashed_password = password_hash($password, PASSWORD_DEFAULT);
+
+        $sql = "INSERT INTO n_user (full_name, email, password, category) VALUES (?, ?, ?, ?)";
+        $stmt = $conn->prepare($sql);
+        $stmt->bind_param("ssss", $full_name, $email, $hashed_password, $category);
+
+        if ($stmt->execute()) {
+            echo "<script>
+                alert('Signup successful! Redirecting to login page.');
+                window.location.href = 'LogIn_page.html';
+            </script>";
+            exit;
+        } else {
+            $error_message = "Error: " . $stmt->error;
+        }
+
+        $stmt->close();
+    }
+    $conn->close();
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -55,7 +113,18 @@
             transition: all 0.3s ease;
         }
 
-        .signup-container input:focus {
+        .signup-container select {
+            width: 108%;
+            padding: 0.8rem;
+            margin: 0.5rem 0;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .signup-container input:focus, 
+        .signup-container select:focus {
             border-color: #29B463;
             box-shadow: 0 0 8px rgba(41, 180, 99, 0.2);
             outline: none;
@@ -140,40 +209,64 @@
             margin: 0.5rem 0;
             color: #666;
         }
-
-        @media (max-width: 600px) {
-            .signup-container {
-                padding: 1.5rem;
-                width: 90%;
-            }
-
-            .signup-container h1 {
-                font-size: 2rem;
-            }
-
-            .signup-container input, .signup-container button {
-                font-size: 1rem;
-            }
+        .password-wrapper {
+            position: relative;
+            display: inline-block;
+            width: 109%;
         }
+
+        .password-wrapper input {
+            width: calc(100% - 2.5rem);
+        }
+
+        .password-wrapper .toggle-password {
+            position: absolute;
+            top: 50%;
+            right: 1.5rem;
+            transform: translateY(-50%);
+            cursor: pointer;
+            font-size: 1.2rem;
+            color: #666;
+        }
+
+
     </style>
 </head>
 <body>
+
+<?php if (!empty($error_message)): ?>
+        <script>
+            alert("<?php echo $error_message; ?>");
+        </script>
+    <?php endif; ?>
+
     <div class="signup-container">
         <h1>Create an Account</h1>
-        <!-- <form action="#" method="POST"> -->
-       <form action="User_Dashboard.html" >
-            <input type="text" placeholder="Full Name" >
-            <input type="email" placeholder="Email Address" >
-            <input type="date" placeholder="Date of Birth" >
-            <input type="password" placeholder="Password" id="password" >
-            <div id="strengthMessage" class="password-strength"></div>
-            <input type="password" placeholder="Confirm Password" >
+        <form action="" method="POST">
+            <input type="text" name="full_name" placeholder="Full Name" value="<?php echo htmlspecialchars($_POST['full_name'] ?? ''); ?>">
+            <input type="email" name="email" placeholder="Email Address" value="<?php echo htmlspecialchars($_POST['email'] ?? ''); ?>">
 
+            <!-- Password Field with Eye Icon -->
+            <div class="password-wrapper">
+                <input type="password" id="password" name="password" placeholder="Password">
+                <span class="toggle-password" onclick="togglePassword('password')">&#128065;</span>
+            </div>
+            <!-- Confirm Password Field with Eye Icon -->
+            <div class="password-wrapper">
+                <input type="password" id="confirm_password" name="confirm_password" placeholder="Confirm Password">
+                <span class="toggle-password" onclick="togglePassword('confirm_password')">&#128065;</span>
+            </div>
+            <select name="category" required>
+                <option value="" disabled selected>Select Category</option>
+                <option value="Patient">Patient</option>
+                <option value="Counselor">Counselor</option>
+            </select>
             <button type="submit">Sign Up</button>
+            </form>
 
+        <p>By signing up, you agree to our <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a>.</p>
             <div class="social-signup">
                 <p>Or sign up using:</p>
-                <button type="button" class="facebook">Sign Up with Facebook</button>
                 <button type="button" class="google">Sign Up with Google</button>
             </div>
         </form>
@@ -181,6 +274,7 @@
     </div>
 
     <script>
+
         // Password Strength Indicator
         const passwordInput = document.getElementById('password');
         const strengthMessage = document.getElementById('strengthMessage');
@@ -198,6 +292,15 @@
                 strengthMessage.style.color = "green";
             }
         });
+        // Function to toggle password visibility
+        function togglePassword(inputId) {
+            const inputField = document.getElementById(inputId);
+            if (inputField.type === "password") {
+                inputField.type = "text";
+            } else {
+                inputField.type = "password";
+            }
+        }
     </script>
 </body>
 </html>
