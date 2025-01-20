@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="Img/fav.png" type="img/x-icon">
+    <title>Counselor Resource Hub</title>
+    <style>
+        body { 
+            font-family: 'Helvetica Neue', Arial, sans-serif; 
+            background-color: #eafbea; 
+            color: #333; 
+            margin: 0; 
+            padding: 0;
+        }
+        .container { 
+            width: 85%; 
+            margin: 40px auto; 
+            padding: 30px; 
+            background-color: #ffffff; 
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1); 
+            border-radius: 10px; 
+        }
+        h1 { 
+            font-size: 2.5rem; 
+            color: #006d33; 
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        h2, h3 { 
+            color: #007f40; 
+            margin-top: 30px;
+            border-bottom: 2px solid #007f40; 
+            padding-bottom: 5px;
+        }
+        nav {
+            background-color: #007f40; 
+            padding: 15px; 
+            color: white; 
+            text-align: center;
+        }
+        nav a {
+            color: white; 
+            margin: 0 15px; 
+            text-decoration: none; 
+            font-weight: bold;
+        }
+        nav a:hover {
+            text-decoration: underline;
+        }
+        form {
+            margin-bottom: 40px; 
+            padding: 20px; 
+            background: #e3f6e8; 
+            border-radius: 8px; 
+        }
+        label {
+            font-weight: bold; 
+            color: #333; 
+            display: block; 
+            margin-bottom: 8px;
+        }
+        input, textarea, button {
+            width: 97%; 
+            margin: 10px 0 20px 0; 
+            padding: 12px; 
+            border: 1px solid #ccc; 
+            border-radius: 5px; 
+            font-size: 1rem;
+        }
+        button {
+            background-color: #006d33; 
+            color: white; 
+            font-weight: bold; 
+            border: none; 
+            cursor: pointer; 
+            transition: background-color 0.3s ease; 
+        }
+        button:hover {
+            background-color: #005c29; 
+        }
+        iframe {
+            width: 100%; 
+            height: 400px; 
+            margin: 20px 0; 
+            border: 1px solid #ddd; 
+            border-radius: 4px;
+        }
+        .resources {
+            padding-top: 20px;
+        }
+        .resources p {
+            font-size: 1rem; 
+            color: #555;
+            margin-top: 10px;
+        }
+        footer {
+            text-align: center; 
+            margin-top: 40px; 
+            padding: 20px 0; 
+            background: #e3f6e8;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="#resources">Resources</a>
+        <a href="Contact.html">Contact</a>
+    </nav>
+
+    <div class="container">
+        <h1>Counselor Resource Hub</h1>
+
+        <form id="embedForm">
+            <label for="youtubeLink">YouTube Video Link:</label>
+            <input type="url" id="youtubeLink" placeholder="Enter YouTube embed link" >
+
+            <label for="googleBooksLink">Google Books Link:</label>
+            <input type="url" id="googleBooksLink" placeholder="Enter Google Books iframe link" >
+
+            <label for="notes">Additional Notes:</label>
+            <textarea id="notes" rows="4" placeholder="Enter any additional notes"></textarea>
+
+            <button type="submit">Add Resource</button>
+        </form>
+
+        <div class="resources" id="resources">
+            <h2>Uploaded Resources</h2>
+            <!-- Uploaded links and embeds will appear here -->
+        </div>
+    </div>
+
+    <script>
+        // Load existing resources from the server
+        async function loadResources() {
+            const resourcesDiv = document.getElementById('resources');
+
+            try {
+                const response = await fetch('/getResources');
+                const resources = await response.json();
+
+                resources.forEach(resource => {
+                    if (resource.youtubeLink) {
+                        resourcesDiv.innerHTML += `<h3>YouTube Video</h3><iframe src="${resource.youtubeLink}" frameborder="0" allowfullscreen></iframe>`;
+                    }
+
+                    if (resource.googleBooksLink) {
+                        resourcesDiv.innerHTML += `<h3>Google Book</h3><iframe src="${resource.googleBooksLink}" frameborder="0"></iframe>`;
+                    }
+
+                    if (resource.notes) {
+                        resourcesDiv.innerHTML += `<h3>Notes</h3><p>${resource.notes}</p>`;
+                    }
+                });
+            } catch (error) {
+                console.error('Failed to load resources:', error);
+            }
+        }
+
+        // Handle form submission
+        document.getElementById('embedForm').addEventListener('submit', async function (event) {
+            event.preventDefault();
+
+            const youtubeLink = document.getElementById('youtubeLink').value;
+            const googleBooksLink = document.getElementById('googleBooksLink').value;
+            const notes = document.getElementById('notes').value;
+
+            try {
+                await fetch('/addResource', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ youtubeLink, googleBooksLink, notes })
+                });
+
+                document.getElementById('embedForm').reset();
+                loadResources();
+            } catch (error) {
+                console.error('Failed to add resource:', error);
+            }
+        });
+
+        // Initialize the page by loading resources
+        loadResources();
+    </script>
+
+    <script>
+        // Mock backend for demonstration purposes
+        const mockDatabase = [];
+
+        async function fetch(url, options) {
+            if (url === '/addResource' && options.method === 'POST') {
+                const body = JSON.parse(options.body);
+                mockDatabase.push(body);
+                return { ok: true };
+            }
+
+            if (url === '/getResources') {
+                return { json: async () => mockDatabase };
+            }
+
+            throw new Error('Unknown API endpoint');
+        }
+    </script>
+</body>
+</html>

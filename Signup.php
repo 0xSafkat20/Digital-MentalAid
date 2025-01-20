@@ -36,6 +36,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     } else {
         $hashed_password = password_hash($password, PASSWORD_DEFAULT);
 
+        //INSERT INTO DATABASE
         $sql = "INSERT INTO n_user (full_name, email, password, category) VALUES (?, ?, ?, ?)";
         $stmt = $conn->prepare($sql);
         $stmt->bind_param("ssss", $full_name, $email, $hashed_password, $category);

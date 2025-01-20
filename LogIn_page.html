@@ -121,12 +121,7 @@
             transition: all 0.3s ease;
         }
 
-        .login-container button:disabled {
-            background: #ccc;
-            cursor: not-allowed;
-        }
-
-        .login-container button:hover:enabled {
+        .login-container button:hover {
             background: #238e4e;
         }
 
@@ -173,14 +168,6 @@
             background: #db4437;
         }
 
-        .loading-spinner {
-            display: none;
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-        }
-
         @media (max-width: 768px) {
             .container {
                 flex-direction: column;
@@ -200,10 +187,6 @@
     </style>
 </head>
 <body>
-    <div id="loading-spinner" class="loading-spinner">
-        <img src="Img/spinner.gif" alt="Loading..." style="width: 150px;">
-    </div>
-
     <div class="container">
         <div class="left-content">
             <h1>"Empower your mind, embrace wellness."</h1>
@@ -212,66 +195,66 @@
             <h1>Welcome Back</h1>
             <h2>"It always seems impossible until it’s done." <br><span>– Nelson Mandela</span></h2>
 
-            <form id="loginForm" action="User_Dashboard.html" method="POST">
-                <input type="email" id="email" placeholder="Email Address" required>
-                <p id="email-error" class="error-message"></p>
-                <input type="password" id="password" placeholder="Password" required>
-                <p id="password-error" class="error-message"></p>
-                <button type="submit" id="loginButton" disabled>Log In</button>
+            <form id="loginForm" action="login.php" method="POST">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" placeholder="Enter your email">
+                <div id="email-error" class="error-message"></div>
+
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" placeholder="Enter your password">
+                <div id="password-error" class="error-message"></div>
+
+                <button id="loginButton" type="submit">Login</button>
             </form>
+
             <p class="forgot-password"><a href="Forget_Pass.html">Forgot Password?</a></p>
             <p>Don't have an account? <a href="Signup.php">Sign Up</a></p>
 
             <div class="social-login">
                 <p>Or log in using:</p>
-                <button>Log In with Facebook</button>
-                <button class="google">Log In with Google</button>
+                <button onclick="window.location.href='User_Dashboard.html'">Log In with Facebook</button>
+                <button class="google" onclick="window.location.href='Councelor_Dashboard.html'">Log In with Google</button>
             </div>
         </div>
     </div>
 
     <script>
-        const emailInput = document.getElementById('email');
-        const passwordInput = document.getElementById('password');
-        const loginButton = document.getElementById('loginButton');
-        const emailError = document.getElementById('email-error');
-        const passwordError = document.getElementById('password-error');
+       const emailInput = document.getElementById('email');
+const passwordInput = document.getElementById('password');
+const emailError = document.getElementById('email-error');
+const passwordError = document.getElementById('password-error');
 
-        function validateInputs() {
-            const email = emailInput.value;
-            const password = passwordInput.value;
-            const emailValid = email.endsWith('@gmail.com');
-            const passwordValid = password.length > 0;
+function validateInputs() {
+    const email = emailInput.value.trim();
+    const password = passwordInput.value.trim();
+    let isValid = true;
 
-            emailError.textContent = emailValid ? '' : 'Please enter a valid email address.';
-            passwordError.textContent = passwordValid ? '' : 'Password cannot be empty.';
+    // Validate email
+    if (!email || !email.endsWith('@gmail.com')) {
+        emailError.textContent = 'Please enter a valid email address.';
+        isValid = false;
+    } else {
+        emailError.textContent = '';
+    }
 
-            loginButton.disabled = !(emailValid && passwordValid);
-        }
+    // Validate password
+    if (!password) {
+        passwordError.textContent = 'Password cannot be empty.';
+        isValid = false;
+    } else {
+        passwordError.textContent = '';
+    }
 
-        emailInput.addEventListener('input', validateInputs);
-        passwordInput.addEventListener('input', validateInputs);
+    return isValid;
+}
 
-        const form = document.getElementById('loginForm');
-        form.addEventListener('submit', (e) => {
-            e.preventDefault();
-
-            // Simulate loading and password validation
-            document.getElementById('loading-spinner').style.display = 'block';
-            setTimeout(() => {
-                document.getElementById('loading-spinner').style.display = 'none';
-
-                if (passwordInput.value !== 'correct_password') {
-                    passwordError.textContent = 'Incorrect password. Please try again.';
-                    form.reset();
-                    loginButton.disabled = true;
-                    validateInputs();
-                } else {
-                    alert('Logged in successfully!');
-                    form.submit();
-                }
-            }, 2000);
-        });
+// Attach the validation to the form
+const form = document.getElementById('loginForm');
+form.addEventListener('submit', (e) => {
+    if (!validateInputs()) {
+        e.preventDefault(); // Prevent submission if inputs are invalid
+    }
+});
 
     </script>
 </body>

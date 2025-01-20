@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="Img/fav.png" type="img/x-icon">
+    <title>Find a Therapist</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .search-box {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 30px;
+        }
+
+        .search-box input {
+            padding: 10px;
+            width: 300px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .search-box button {
+            padding: 10px 20px;
+            margin-left: 10px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .search-box button:hover {
+            background-color: #0056b3;
+        }
+
+        .therapist-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .therapist-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .therapist-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .info {
+            padding: 20px;
+        }
+
+        .info h3 {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        .info p {
+            margin-bottom: 10px;
+        }
+
+        .view-btn, .book-btn, .chat-btn {
+            padding: 10px 20px;
+            margin: 5px;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .view-btn {
+            background-color: #28a745;
+        }
+
+        .view-btn:hover {
+            background-color: #218838;
+        }
+
+        .book-btn {
+            background-color: #ffc107;
+        }
+
+        .book-btn:hover {
+            background-color: #e0a800;
+        }
+
+        .chat-btn {
+            background-color: #17a2b8;
+        }
+
+        .chat-btn:hover {
+            background-color: #138496;
+        }
+
+        @media (max-width: 768px) {
+            .therapist-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .therapist-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .search-box input {
+                width: 200px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Find a Therapist Near You</h1>
+        
+        <!-- Search Section -->
+        <div class="search-box">
+            <input type="text" id="search" placeholder="Search for therapists...">
+            <button class="search-btn">Search</button>
+        </div>
+        
+        <!-- Therapist Grid -->
+        <div class="therapist-grid">
+            <div class="therapist-card">
+                <img src="Img/doctor.jpg" alt="Therapist 1">
+                <div class="info">
+                    <h3>Dr. John Doe</h3>
+                    <p>Rating: ★★★★☆</p>
+                    <p>Location: Bashundhara, Dhaka</p>
+                    <p>Specialty: Cognitive Behavioral Therapy</p>
+                    <button class="view-btn" onclick="window.location.href='therapist_profile.html'">View Details</button>
+                    <button class="book-btn" onclick="window.location.href='therapist_booking.html'">Book Appointment</button>
+                    <button class="chat-btn" onclick="window.location.href='chat_with_therapist1.html'">Chat</button>
+                </div>
+            </div>
+            <div class="therapist-card">
+                <img src="Img/doctor.jpg" alt="Therapist 2">
+                <div class="info">
+                    <h3>Dr. Jane Smith</h3>
+                    <p>Rating: ★★★★★</p>
+                    <p>Location: Bashundhara, Dhaka</p>
+                    <p>Specialty: Family Therapy</p>
+                    <button class="view-btn" onclick="window.location.href='therapist_profile.html'">View Details</button>
+                    <button class="book-btn" onclick="window.location.href='therapist_booking.html'">Book Appointment</button>
+                    <button class="chat-btn" onclick="window.location.href='chat_with_therapist2.html'">Chat</button>
+                </div>
+            </div>
+            <div class="therapist-card">
+                <img src="Img/doctor.jpg" alt="Therapist 3">
+                <div class="info">
+                    <h3>Dr. Emily White</h3>
+                    <p>Rating: ★★★☆☆</p>
+                    <p>Location: City, Dhaka</p>
+                    <p>Specialty: PTSD Treatment</p>
+                    <button class="view-btn" onclick="window.location.href='therapist_profile.html'">View Details</button>
+                    <button class="book-btn" onclick="window.location.href='therapist_booking.html'">Book Appointment</button>
+                    <button class="chat-btn" onclick="window.location.href='chat_with_therapist3.html'">Chat</button>
+                </div>
+            </div>
+            <div class="therapist-card">
+                <img src="Img/doctor.jpg" alt="Therapist 4">
+                <div class="info">
+                    <h3>Dr. Michael Brown</h3>
+                    <p>Rating: ★★★★☆</p>
+                    <p>Location: Bashundhara, Dhaka</p>
+                    <p>Specialty: Couples Therapy</p>
+                    <button class="view-btn" onclick="window.location.href='therapist_profile.html'">View Details</button>
+                    <button class="book-btn" onclick="window.location.href='therapist_booking.html'">Book Appointment</button>
+                    <button class="chat-btn" onclick="window.location.href='chat_with_therapist4.html'">Chat</button>
+                </div>
+            </div>
+            <div class="therapist-card">
+                <img src="Img/doctor.jpg" alt="Therapist 5">
+                <div class="info">
+                    <h3>Dr. Linda Green</h3>
+                    <p>Rating: ★★★★☆</p>
+                    <p>Location: Bashundhara, Dhaka</p>
+                    <p>Specialty: Addiction Counseling</p>
+                    <button class="view-btn" onclick="window.location.href='therapist_profile.html'">View Details</button>
+                    <button class="book-btn" onclick="window.location.href='therapist_booking.html'">Book Appointment</button>
+                    <button class="chat-btn" onclick="window.location.href='chat_with_therapist5.html'">Chat</button>
+                </div>
+            </div>
+            <div class="therapist-card">
+                <img src="Img/doctor.jpg" alt="Therapist 6">
+                <div class="info">
+                    <h3>Dr. Alan Black</h3>
+                    <p>Rating: ★★★★★</p>
+                    <p>Location: Bashundhara, Dhaka</p>
+                    <p>Specialty: Stress Management</p>
+                    <button class="view-btn" onclick="window.location.href='therapist_profile.html'">View Details</button>
+                    <button class="book-btn" onclick="window.location.href='therapist_booking.html'">Book Appointment</button>
+                    <button class="chat-btn" onclick="window.location.href='chat_with_therapist6.html'">Chat</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
