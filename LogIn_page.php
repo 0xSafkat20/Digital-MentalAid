@@ -207,13 +207,13 @@
                 <button id="loginButton" type="submit">Login</button>
             </form>
 
-            <p class="forgot-password"><a href="Forget_Pass.html">Forgot Password?</a></p>
+            <p class="forgot-password"><a href="Forget_Pass.php">Forgot Password?</a></p>
             <p>Don't have an account? <a href="Signup.php">Sign Up</a></p>
 
             <div class="social-login">
                 <p>Or log in using:</p>
-                <button onclick="window.location.href='User_Dashboard.html'">Log In with Facebook</button>
-                <button class="google" onclick="window.location.href='Councelor_Dashboard.html'">Log In with Google</button>
+                <button onclick="window.location.href='User_Dashboard.php'">Log In with Facebook</button>
+                <button class="google" onclick="window.location.href='Councelor_Dashboard.php'">Log In with Google</button>
             </div>
         </div>
     </div>

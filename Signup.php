@@ -44,7 +44,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         if ($stmt->execute()) {
             echo "<script>
                 alert('Signup successful! Redirecting to login page.');
-                window.location.href = 'LogIn_page.html';
+                window.location.href = 'LogIn_page.php';
             </script>";
             exit;
         } else {

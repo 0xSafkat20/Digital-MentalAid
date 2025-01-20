@@ -32,7 +32,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if ($email === 'admin@gmail.com' && $password === 'admin123') {
         $_SESSION['email'] = $email;
         $_SESSION['role'] = 'admin';
-        header("Location: admin_Dashboard.html");
+        header("Location: Admin_Dashboard.html");
         exit();
     }
 
@@ -54,9 +54,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
             // Redirect based on category
             if ($user['category'] == 'Patient') {
-                header("Location: Patient_Dashboard.html");
+                header("Location: Patient_Dashboard.php");
             } elseif ($user['category'] == 'Counselor') {
-                header("Location: Councelor_Dashboard.html");
+                header("Location: Councelor_Dashboard.php");
             }
         } else {
             echo "Invalid password.";

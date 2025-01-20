@@ -116,7 +116,7 @@
             <input type="email" placeholder="Enter your email address" required>
             <button type="submit">Send Reset Link</button>
         </form>
-        <p>Remember your password? <a href="LogIn_page.html">Log In</a></p>
+        <p>Remember your password? <a href="LogIn_page.php">Log In</a></p>
     </div>
 </body>
 </html>
